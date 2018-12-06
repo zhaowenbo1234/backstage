@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaowb.boot.backstage.mapper.UserPostMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaowb.boot.backstage.entity.UserPost" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="post_id" property="postId" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
