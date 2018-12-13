@@ -22,5 +22,5 @@ public interface IUserService {
      * @param loginName 登录名
      * @return User
      */
-    User findUserByLoginName(String loginName);
+    User findUserByUserName(String loginName);
 }

@@ -1,6 +1,8 @@
 package com.zhaowb.boot.backstage.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author zhaowb
@@ -66,6 +68,10 @@ public class Role {
      * 备注
      */
     private String remark;
+
+    private Set<User> users = new HashSet<>();
+
+    private Set<Menu> menus = new HashSet<>();
 
     /**
      * 获取角色ID
@@ -281,5 +287,63 @@ public class Role {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public Role() {
+    }
+
+    public Role(Integer roleId, String roleName, String roleKey, Integer roleSort, String dataScope, String status,
+                String delFlag, String createBy, Date createTime, String updateBy, Date updateTime, String remark,
+                Set<User> users, Set<Menu> menus) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+        this.roleKey = roleKey;
+        this.roleSort = roleSort;
+        this.dataScope = dataScope;
+        this.status = status;
+        this.delFlag = delFlag;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+        this.users = users;
+        this.menus = menus;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", roleKey='" + roleKey + '\'' +
+                ", roleSort=" + roleSort +
+                ", dataScope='" + dataScope + '\'' +
+                ", status='" + status + '\'' +
+                ", delFlag='" + delFlag + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", remark='" + remark + '\'' +
+                ", users=" + users +
+                ", menus=" + menus +
+                '}';
     }
 }

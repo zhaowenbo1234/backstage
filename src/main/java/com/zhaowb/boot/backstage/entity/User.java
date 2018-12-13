@@ -1,13 +1,16 @@
 package com.zhaowb.boot.backstage.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 用户对象 sys_user
  *
  * @author zhaowb
  */
-public class User {
+public class User  implements Serializable {
     /**
      * 用户ID
      */
@@ -21,12 +24,12 @@ public class User {
     /**
      * 登录账号
      */
-    private String loginName;
+    private String userName;
 
     /**
      * 用户昵称
      */
-    private String userName;
+    private String name;
 
     /**
      * 用户类型（00系统用户）
@@ -46,7 +49,7 @@ public class User {
     /**
      * 手机号码
      */
-    private String phonenumber;
+    private String phoneNumber;
 
     /**
      * 生日
@@ -134,6 +137,17 @@ public class User {
     private String remark;
 
     /**
+     * 角色集合
+     */
+    private Set<Role> roles = new HashSet<>();
+
+    /**
+     * 部门对象
+     */
+    private Dept dept;
+
+
+    /**
      * 获取用户ID
      *
      * @return user_id - 用户ID
@@ -174,17 +188,17 @@ public class User {
      *
      * @return login_name - 登录账号
      */
-    public String getLoginName() {
-        return loginName;
+    public String getUserName() {
+        return userName;
     }
 
     /**
      * 设置登录账号
      *
-     * @param loginName 登录账号
+     * @param userName 登录账号
      */
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -192,17 +206,17 @@ public class User {
      *
      * @return user_name - 用户昵称
      */
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
     /**
      * 设置用户昵称
      *
-     * @param userName 用户昵称
+     * @param name 用户昵称
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -262,19 +276,19 @@ public class User {
     /**
      * 获取手机号码
      *
-     * @return phonenumber - 手机号码
+     * @return phoneNumber - 手机号码
      */
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     /**
      * 设置手机号码
      *
-     * @param phonenumber 手机号码
+     * @param phoneNumber 手机号码
      */
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhonenumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     /**
@@ -581,5 +595,91 @@ public class User {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public User() {
+    }
+
+    public User(Integer userId, Integer deptId, String userName, String name, String userType, String email,
+                String telPhone, String phoneNumber, String birthday, String address, String sex, String avatar,
+                String password, String salt, String status, String delFlag, String loginIp, Date loginDate,
+                String createBy, Date createTime, String createHost, String updateBy, String updateHost, Date updateTime,
+                String remark, Set<Role> roles, Dept dept) {
+        this.userId = userId;
+        this.deptId = deptId;
+        this.userName = userName;
+        this.name = name;
+        this.userType = userType;
+        this.email = email;
+        this.telPhone = telPhone;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
+        this.address = address;
+        this.sex = sex;
+        this.avatar = avatar;
+        this.password = password;
+        this.salt = salt;
+        this.status = status;
+        this.delFlag = delFlag;
+        this.loginIp = loginIp;
+        this.loginDate = loginDate;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.createHost = createHost;
+        this.updateBy = updateBy;
+        this.updateHost = updateHost;
+        this.updateTime = updateTime;
+        this.remark = remark;
+        this.roles = roles;
+        this.dept = dept;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", deptId=" + deptId +
+                ", userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                ", userType='" + userType + '\'' +
+                ", email='" + email + '\'' +
+                ", telPhone='" + telPhone + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", address='" + address + '\'' +
+                ", sex='" + sex + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", status='" + status + '\'' +
+                ", delFlag='" + delFlag + '\'' +
+                ", loginIp='" + loginIp + '\'' +
+                ", loginDate=" + loginDate +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", createHost='" + createHost + '\'' +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateHost='" + updateHost + '\'' +
+                ", updateTime=" + updateTime +
+                ", remark='" + remark + '\'' +
+                ", roles=" + roles +
+                ", dept=" + dept +
+                '}';
     }
 }

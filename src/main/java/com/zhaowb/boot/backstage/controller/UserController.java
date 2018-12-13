@@ -19,8 +19,8 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("/findUserByLoginName")
-    public User findUserByLoginName(String loginName){
-        return userService.findUserByLoginName(loginName);
+    @RequestMapping("/findUserByUserName")
+    public User findUserByUserName(String username){
+        return userService.findUserByUserName(username);
     }
 }
