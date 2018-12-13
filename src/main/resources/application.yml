@@ -54,3 +54,6 @@ mybatis:
   # configLocation: classpath:mapper/mybatis-config.xml
   # 搜索指定包别名
 #  typeAliasesPackage: com.zhaowb.boot.backstage.mapper
+logging:
+  level:
+    com.zhaowb.boot.backstage.mapper: debug
