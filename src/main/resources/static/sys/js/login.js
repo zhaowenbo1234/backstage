@@ -1,13 +1,13 @@
 function login() {
 
     /*用户名*/
-    var username = "";
+    var username = $("input[name='username']").val();
     /*密码*/
-    var password = "";
+    var password =$("input[name='password']").val();
     /*记住我*/
-    var rememberme = "";
+    var rememberme = $("input[name='rememberme']").is(':checked');
     /*验证码*/
-    var validateCode = "";
+    var validateCode = $("input[name='validateCode']").val();
     $.ajax({
         type: "post",
         url: "/loginUser",
