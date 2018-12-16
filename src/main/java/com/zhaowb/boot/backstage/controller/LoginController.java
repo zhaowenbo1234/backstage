@@ -19,12 +19,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = {"/","/login"} ,method = RequestMethod.GET)
+    @RequestMapping(value = {"/login"} ,method = RequestMethod.GET)
     public String loginPage(){
         return "/login";
     }
 
-    @RequestMapping(value = "/loginUser",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(String username, String password, HttpSession session){
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
@@ -32,6 +32,11 @@ public class LoginController {
         subject.login(token);
         User user = (User) subject.getPrincipal();
         session.setAttribute("user",user);
+        return "/index";
+    }
+
+    @RequestMapping("/index")
+    public String index(){
         return "/index";
     }
 }

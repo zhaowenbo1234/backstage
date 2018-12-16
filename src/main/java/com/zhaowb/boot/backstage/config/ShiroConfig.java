@@ -46,19 +46,19 @@ public class ShiroConfig {
         // 对静态资源设置匿名访问
         filterChainDefinitionMap.put("/favicon.ico**", "anon");
         filterChainDefinitionMap.put("/*.png**", "anon");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/ajax/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/sys/js/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
-
         // anon表示不拦截
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/druid/**", "anon");
-        filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/loginUser", "anon");
         // 指定admin接口只允许admin角色的用户访问
         filterChainDefinitionMap.put("/admin","roles[admin]");
