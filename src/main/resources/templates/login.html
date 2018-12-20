@@ -49,14 +49,14 @@
             </div>
         </div>
         <div class="col-sm-5">
-            <form id="signUpForm">
+            <form id="signUpForm" action="/login" th:action="@{/login}" method="post">
                 <h4 class="no-margins">登录：</h4>
                 <p class="m-t-md">登录到H+后台主题UI框架</p>
                 <input type="text" name="username" class="form-control uname" placeholder="用户名" />
                 <input type="password" name="password" class="form-control pword m-b" placeholder="密码" />
                 <input class="i-checks" type="checkbox" name="rememberme" />&nbsp;&nbsp;记住我
                 <a href="#">忘记密码了？</a>
-                <button class="btn btn-success btn-block" id="btnSubmit" onclick="login()">登录</button>
+                <button class="btn btn-success btn-block" type="submit" id="btnSubmit">登录</button>
             </form>
         </div>
     </div>
@@ -80,6 +80,6 @@
 <script src="../static/ajax/libs/iCheck/icheck.min.js" th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
 <script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
 
-<script src="../static/sys/js/login.js" th:src="@{/sys/js/login.js?v=1.1}"></script>
+<script src="../static/sys/js/login.js" th:src="@{/sys/js/login.js?v=2.1}"></script>
 <!-- Mirrored from www.zi-han.net/theme/hplus/login_v2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:52 GMT -->
 </html>

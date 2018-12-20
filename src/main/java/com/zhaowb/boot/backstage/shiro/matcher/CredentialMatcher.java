@@ -26,12 +26,9 @@ public class CredentialMatcher extends SimpleCredentialsMatcher {
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
         String password = new String(usernamePasswordToken.getPassword());
-        String username = new String(usernamePasswordToken.getUsername());
+        String username = usernamePasswordToken.getUsername();
 
         User user = userService.findUserByUserName(username);
-        boolean b = this.equals(encryptPassword(username, password, user.getSalt()), user.getPassword());
-
-
         return this.equals(encryptPassword(username, password, user.getSalt()), user.getPassword());
     }
 
@@ -41,7 +38,6 @@ public class CredentialMatcher extends SimpleCredentialsMatcher {
     public String encryptPassword(String username, String password, String salt) {
         return new Md5Hash(username + password + salt).toHex();
     }
-
 
 
     /**

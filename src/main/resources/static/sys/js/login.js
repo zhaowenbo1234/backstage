@@ -6,7 +6,7 @@ function login() {
     var rememberMe = $("input[name='rememberme']").is(':checked');
     $.ajax({
         type: "post",
-        url: ctx + "login",
+        url: ctx + 'login',
         data: {
             "username": username,
             "password": password,
@@ -14,13 +14,19 @@ function login() {
             "rememberMe": rememberMe
         },
         success: function(r) {
+            alert(r.code);
             if (r.code == 200) {
-                window.location.href = ctx + 'index';
+
+                window.location.href =  '/home';
             } else {
+                alert("else");
                 // $.modal.closeLoading();
                 // $('.imgcode').click();
                 // $.modal.msg(r.msg);
             }
+        },
+        error: function(r) {
+            alert("dasdasdasd")
         }
 
     });

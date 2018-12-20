@@ -41,8 +41,6 @@ public class ShiroConfig {
         // 定义请求拦截规则，key是正则表达式用于匹配访问的路径，value则用于指定使用什么拦截器进行拦截
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>(16);
         // 拦截index接口，authc表示需要认证才能访问
-        filterChainDefinitionMap.put("/index", "authc");
-
         // 对静态资源设置匿名访问
         filterChainDefinitionMap.put("/favicon.ico**", "anon");
         filterChainDefinitionMap.put("/*.png**", "anon");
