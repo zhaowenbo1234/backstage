@@ -1,16 +1,15 @@
-package com.zhaowb.boot.backstage.mapper;
+package com.zhaowb.boot.backstage.service;
 
 import com.zhaowb.boot.backstage.entity.Menu;
-import org.springframework.stereotype.Repository;
-import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
 /**
- * @author zhaowb
+ * @Description
+ * @auther zwb
+ * @create 2018-12-23 20:57
  */
-@Repository
-public interface MenuMapper extends Mapper<Menu> {
+public interface IMenuService {
 
     /**
      * 根据登录用户ID查询菜单

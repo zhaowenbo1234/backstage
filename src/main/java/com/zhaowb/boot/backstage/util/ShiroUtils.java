@@ -1,7 +1,6 @@
 package com.zhaowb.boot.backstage.util;
 
 import com.zhaowb.boot.backstage.entity.User;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;

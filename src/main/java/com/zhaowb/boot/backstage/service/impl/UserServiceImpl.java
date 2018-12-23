@@ -29,4 +29,9 @@ public class UserServiceImpl implements IUserService {
     public User findUserByUserName(String username) {
         return userMapper.findUserByUserName(username);
     }
+
+    private void deleteUserById(Integer id){
+
+        int i = userMapper.deleteByPrimaryKey(id);
+    }
 }
