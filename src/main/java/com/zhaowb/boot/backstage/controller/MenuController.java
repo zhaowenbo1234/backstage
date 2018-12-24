@@ -26,7 +26,7 @@ public class MenuController {
      */
     @RequestMapping("/selectMenusByUserId")
     @ResponseBody
-    List<Menu> selectMenusByUserId(Integer userId){
+    public List<Menu> selectMenusByUserId(Integer userId) {
         return menuService.selectMenusByUserId(userId);
     }
 
