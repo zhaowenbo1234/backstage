@@ -12,10 +12,10 @@ import java.util.List;
  */
 public interface IUserService {
     /**
-     * 获取全部用户
+     * 获取全部未删除用户
      * @return
      */
-    List<User> getAllUser();
+    List<User> selectAllUsers();
 
     /**
      *根据用户登录名查询用户信息

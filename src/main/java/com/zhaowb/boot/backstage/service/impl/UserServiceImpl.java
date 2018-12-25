@@ -21,7 +21,8 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> selectAllUsers() {
+
         return userMapper.selectAll();
     }
 

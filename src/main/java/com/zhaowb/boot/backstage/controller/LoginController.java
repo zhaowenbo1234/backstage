@@ -3,7 +3,6 @@ package com.zhaowb.boot.backstage.controller;
 import com.zhaowb.boot.backstage.entity.Menu;
 import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.service.IMenuService;
-import com.zhaowb.boot.backstage.service.impl.MenuServiceImpl;
 import com.zhaowb.boot.backstage.util.ShiroUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -52,10 +52,13 @@ public class LoginController {
     }
 
     @RequestMapping("/home")
-    public String home() {
+    public String home(ModelAndView mav) {
 
         User user = ShiroUtils.getSysUser();
         List<Menu> menus =  menuService.selectMenusByUserId(user.getUserId());
+        mav.addObject("user",user);
+        mav.addObject("menus",menus);
+
         return "/home";
     }
 

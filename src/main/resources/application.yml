@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: backstage
+  thymeleaf:
+    cache: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -49,11 +51,11 @@ spring:
 # mybatis 配置
 mybatis:
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
-  mapper-locations: classpath:/mapper/**/*Mapper.xml
+  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
   # 加载全局的配置文件
-  # configLocation: classpath:mapper/mybatis-config.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
   # 搜索指定包别名
-#  typeAliasesPackage: com.zhaowb.boot.backstage.mapper
+  typeAliasesPackage: com.zhaowb.boot.backstage.entity
 logging:
   level:
-    com.zhaowb.boot.backstage.mapper: debug
+    com.zhaowb.boot.backstage: debug

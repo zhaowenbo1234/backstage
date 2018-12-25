@@ -6,7 +6,7 @@
    - druid-boot 1.1.10
    - mybatis-boot 1.3.2
    - mysql 5.1.44
-   - tk.mapper 4.1.0
+   - ~~tk.mapper 4.1.0(使用的话，sql可以少些很多，放弃使用，学习些sql)~~
 
 2. 功能
 
