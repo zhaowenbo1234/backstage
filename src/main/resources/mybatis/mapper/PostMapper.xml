@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaowb.boot.backstage.mapper.PostMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaowb.boot.backstage.entity.Post" >
+    <id column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="post_name" property="postName" jdbcType="VARCHAR" />
+    <result column="post_sort" property="postSort" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_post
+    where post_id = #{postId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhaowb.boot.backstage.entity.Post" >
+    insert into sys_post (post_id, post_code, post_name, 
+      post_sort, status, create_by, 
+      create_time, update_by, update_time, 
+      remark)
+    values (#{postId,jdbcType=INTEGER}, #{postCode,jdbcType=VARCHAR}, #{postName,jdbcType=VARCHAR}, 
+      #{postSort,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zhaowb.boot.backstage.entity.Post" >
+    update sys_post
+    set post_code = #{postCode,jdbcType=VARCHAR},
+      post_name = #{postName,jdbcType=VARCHAR},
+      post_sort = #{postSort,jdbcType=INTEGER},
+      status = #{status,jdbcType=CHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select post_id, post_code, post_name, post_sort, status, create_by, create_time, 
+    update_by, update_time, remark
+    from sys_post
+    where post_id = #{postId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select post_id, post_code, post_name, post_sort, status, create_by, create_time, 
+    update_by, update_time, remark
+    from sys_post
+  </select>
+</mapper>

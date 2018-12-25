@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaowb.boot.backstage.mapper.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaowb.boot.backstage.entity.Dept" >
+    <id column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="ancestors" property="ancestors" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="order_num" property="orderNum" jdbcType="INTEGER" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_dept
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhaowb.boot.backstage.entity.Dept" >
+    insert into sys_dept (dept_id, parent_id, ancestors, 
+      dept_name, order_num, leader, 
+      phone, email, status, 
+      del_flag, create_by, create_time, 
+      update_by, update_time)
+    values (#{deptId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{ancestors,jdbcType=VARCHAR}, 
+      #{deptName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, #{leader,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{delFlag,jdbcType=CHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zhaowb.boot.backstage.entity.Dept" >
+    update sys_dept
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      ancestors = #{ancestors,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      leader = #{leader,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email, 
+    status, del_flag, create_by, create_time, update_by, update_time
+    from sys_dept
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select dept_id, parent_id, ancestors, dept_name, order_num, leader, phone, email, 
+    status, del_flag, create_by, create_time, update_by, update_time
+    from sys_dept
+  </select>
+</mapper>

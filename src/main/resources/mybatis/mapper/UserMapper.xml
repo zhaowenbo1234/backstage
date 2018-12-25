@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhaowb.boot.backstage.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.zhaowb.boot.backstage.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="tel_phone" property="telPhone" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="login_date" property="loginDate" jdbcType="TIMESTAMP" />
+    <result column="create_host" property="createHost" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_host" property="updateHost" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <association property="dept"    column="dept_id" javaType="Dept" resultMap="DeptResultMap" />
+    <collection  property="roles"   javaType="java.util.List"        resultMap="RoleResultMap" />
+  </resultMap>
+  <resultMap id="DeptResultMap" type="com.zhaowb.boot.backstage.entity.Dept" >
+    <id column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="ancestors" property="ancestors" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="order_num" property="orderNum" jdbcType="INTEGER" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <resultMap id="RoleResultMap" type="com.zhaowb.boot.backstage.entity.Role" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_key" property="roleKey" jdbcType="VARCHAR" />
+    <result column="role_sort" property="roleSort" jdbcType="INTEGER" />
+    <result column="data_scope" property="dataScope" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhaowb.boot.backstage.entity.User" >
+    insert into sys_user (user_id, dept_id, user_name, 
+      name, user_type, email, 
+      tel_phone, phone_number, birthday, 
+      address, sex, avatar, 
+      password, salt, status, 
+      del_flag, login_ip, login_date, 
+      create_host, create_by, create_time, 
+      update_host, update_by, update_time, 
+      remark)
+    values (#{userId,jdbcType=INTEGER}, #{deptId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{telPhone,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+      #{address,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
+      #{delFlag,jdbcType=CHAR}, #{loginIp,jdbcType=VARCHAR}, #{loginDate,jdbcType=TIMESTAMP}, 
+      #{createHost,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateHost,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zhaowb.boot.backstage.entity.User" >
+    update sys_user
+    set dept_id = #{deptId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tel_phone = #{telPhone,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      address = #{address,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      login_date = #{loginDate,jdbcType=TIMESTAMP},
+      create_host = #{createHost,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_host = #{updateHost,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select user_id, dept_id, user_name, name, user_type, email, tel_phone, phone_number, 
+    birthday, address, sex, avatar, password, salt, status, del_flag, login_ip, login_date, 
+    create_host, create_by, create_time, update_host, update_by, update_time, remark
+    from sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select user_id, dept_id, user_name, name, user_type, email, tel_phone, phone_number, 
+    birthday, address, sex, avatar, password, salt, status, del_flag, login_ip, login_date, 
+    create_host, create_by, create_time, update_host, update_by, update_time, remark
+    from sys_user
+  </select>
+
+  <select id="findUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT su.user_id,su.dept_id,su.user_name,su.`name`,su.user_type,su.email,su.tel_phone,su.phone_number,su.birthday,
+      su.address,su.sex,su.avatar,su.`password`,su.salt,su.`status`,su.del_flag,su.login_ip,su.login_date,su.create_host,
+      su.create_by,su.create_time,su.update_host,su.update_by ,su.update_time,su.remark, sd.dept_id, sd.parent_id,
+      sd.dept_name, sd.order_num, sd.status as dept_status,sr.role_id, sr.role_name, sr.role_key, sr.role_sort,
+      sr.data_scope, sr.status as role_status FROM sys_user su
+      LEFT JOIN sys_dept sd on su.dept_id = sd.dept_id
+      LEFT JOIN sys_user_role sur on su.user_id = sur.user_id
+      LEFT JOIN sys_role sr on sr.role_id = sur.role_id
+      WHERE su.user_name = #{userName}
+  </select>
+</mapper>
