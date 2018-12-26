@@ -1,5 +1,7 @@
 package com.zhaowb.boot.backstage.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zhaowb.boot.backstage.entity.Menu;
 import com.zhaowb.boot.backstage.mapper.MenuMapper;
 import com.zhaowb.boot.backstage.service.IMenuService;
@@ -20,7 +22,12 @@ public class MenuServiceImpl implements IMenuService {
     private MenuMapper menuMapper;
 
     @Override
-    public List<Menu> selectMenusByUserId(Integer userId) {
-        return menuMapper.selectMenusByUserId(userId);
+    public PageInfo<Menu> selectMenusByUserId(Integer userId) {
+
+        PageHelper.startPage(1,10);
+        List list = menuMapper.selectMenusByUserId(userId);
+        PageInfo pageInfo = new PageInfo(list);
+
+        return pageInfo;
     }
 }

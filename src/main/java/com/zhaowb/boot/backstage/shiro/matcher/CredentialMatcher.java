@@ -51,6 +51,6 @@ public class CredentialMatcher extends SimpleCredentialsMatcher {
     }
 
     public static void main(String[] args) {
-        System.out.println(new CredentialMatcher().encryptPassword("admin", "admin", "111111"));
+        System.out.println(new CredentialMatcher().encryptPassword("ry", "admin", "222222"));
     }
 }

@@ -10,6 +10,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,7 +44,7 @@ public class LoginController {
             subject.login(token);
             User user = (User) subject.getPrincipal();
             session.setAttribute("user", user);
-            return "redirect:/home";
+            return "redirect:/index";
         } catch (AuthenticationException e) {
             System.out.println("登录错误");
             return "login";
@@ -51,16 +52,26 @@ public class LoginController {
 
     }
 
-    @RequestMapping("/home")
-    public String home(ModelAndView mav) {
+    @RequestMapping("/index")
+    public String index(ModelMap mm) {
 
         User user = ShiroUtils.getSysUser();
-        List<Menu> menus =  menuService.selectMenusByUserId(user.getUserId());
-        mav.addObject("user",user);
-        mav.addObject("menus",menus);
+        mm.addAttribute("user", user);
 
+        return "/index";
+    }
+
+    @RequestMapping("/home")
+    public String home(ModelMap mm) {
+        // 主页面
         return "/home";
     }
+
+    @RequestMapping("/menutree")
+    public String menutree() {
+        return "menutree";
+    }
+
 
     @RequestMapping("/loginOut")
     public String loginOut() {

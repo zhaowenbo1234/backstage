@@ -1,7 +1,10 @@
 package com.zhaowb.boot.backstage.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.zhaowb.boot.backstage.entity.Menu;
+import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.service.IMenuService;
+import com.zhaowb.boot.backstage.util.ShiroUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +29,20 @@ public class MenuController {
      */
     @RequestMapping("/selectMenusByUserId")
     @ResponseBody
-    public List<Menu> selectMenusByUserId(Integer userId) {
+    public PageInfo<Menu> selectMenusByUserId(Integer userId) {
         return menuService.selectMenusByUserId(userId);
+    }
+
+    /**
+     * 显示左侧用户的树形菜单
+     * @return List<Menu>
+     */
+    @RequestMapping("/menus")
+    @ResponseBody
+    public List<Menu> menus(){
+        User user = ShiroUtils.getSysUser();
+        List<Menu> menus =  menuService.selectMenusByUserId(user.getUserId()).getList();
+        return menus;
     }
 
 }
