@@ -1,35 +1,93 @@
 package com.zhaowb.boot.backstage.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Menu {
+public class Menu implements Serializable {
+
+    /**
+     * 菜单ID
+     */
+    @JsonProperty(value = "id")
     private Integer menuId;
-
+    /**
+     * 菜单名称
+     */
+    @JsonProperty(value = "name")
     private String menuName;
-
+    /**
+     * 父菜单ID
+     */
+    @JsonProperty(value = "pId")
     private Integer parentId;
-
+    /**
+     * 显示顺序
+     */
     private Integer orderNum;
-
+    /**
+     * 菜单URL
+     */
     private String url;
-
+    /**
+     * 类型:0目录,1菜单,2按钮
+     */
     private String menuType;
-
+    /**
+     * 菜单状态:0显示,1隐藏
+     */
     private String visible;
-
+    /**
+     * 权限字符串
+     */
     private String perms;
-
+    /**
+     * 菜单图标
+     */
     private String icon;
-
+    /**
+     * 创建人
+     */
     private String createBy;
-
+    /**
+     * 创建时间
+     */
     private Date createTime;
-
+    /**
+     * 修改人
+     */
     private String updateBy;
-
+    /**
+     * 修改时间
+     */
     private Date updateTime;
-
+    /**
+     * 备注
+     */
     private String remark;
+
+    public Menu() {
+    }
+
+    public Menu(Integer menuId, String menuName, Integer parentId, Integer orderNum, String url, String menuType,
+                String visible, String perms, String icon, String createBy, Date createTime, String updateBy,
+                Date updateTime, String remark) {
+        this.menuId = menuId;
+        this.menuName = menuName;
+        this.parentId = parentId;
+        this.orderNum = orderNum;
+        this.url = url;
+        this.menuType = menuType;
+        this.visible = visible;
+        this.perms = perms;
+        this.icon = icon;
+        this.createBy = createBy;
+        this.createTime = createTime;
+        this.updateBy = updateBy;
+        this.updateTime = updateTime;
+        this.remark = remark;
+    }
 
     public Integer getMenuId() {
         return menuId;
@@ -141,5 +199,25 @@ public class Menu {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "menuId=" + menuId +
+                ", menuName='" + menuName + '\'' +
+                ", parentId=" + parentId +
+                ", orderNum=" + orderNum +
+                ", url='" + url + '\'' +
+                ", menuType='" + menuType + '\'' +
+                ", visible='" + visible + '\'' +
+                ", perms='" + perms + '\'' +
+                ", icon='" + icon + '\'' +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 }

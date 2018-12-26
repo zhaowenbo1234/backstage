@@ -346,7 +346,7 @@ public class User implements Serializable {
                 String telPhone, String phoneNumber, Date birthday, String address, String sex, String avatar,
                 String password, String salt, String status, String delFlag, String loginIp, Date loginDate,
                 String createHost, String createBy, Date createTime, String updateHost, String updateBy, Date updateTime,
-                String remark, Dept dept, List<Role> roles) {
+                String remark) {
         this.userId = userId;
         this.deptId = deptId;
         this.userName = userName;
@@ -372,8 +372,6 @@ public class User implements Serializable {
         this.updateBy = updateBy;
         this.updateTime = updateTime;
         this.remark = remark;
-        this.dept = dept;
-        this.roles = roles;
     }
 
     @Override
