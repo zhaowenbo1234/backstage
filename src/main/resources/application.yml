@@ -59,3 +59,8 @@ mybatis:
 logging:
   level:
     com.zhaowb.boot.backstage: debug
+pagehelper:
+#  dialect: mysql 加入之后会出现配置错误，
+  reasonable: true
+  support-methods-arguments: true
+  params: count==countSql

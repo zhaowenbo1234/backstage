@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+
+<!--树形菜单，测试用，后期可能会用，-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .ztree li a.level0 {width:200px;height: 20px; text-align: center; display:block; background-color: #0B61A4; border:1px silver solid;}
+        .ztree li a.level0.cur {background-color: #66A3D2; }
+        .ztree li a.level0 span {display: block; color: white; padding-top:3px; font-size:12px; font-weight: bold;word-spacing: 2px;}
+        .ztree li a.level0 span.button {	float:right; margin-left: 10px; visibility: visible;display:none;}
+        .ztree li span.button.switch.level0 {display:none;}
+    </style>
+</head>
+<body>
+<h1>Hello Page</h1>
+<div class="content_wrap">
+    <div class="zTreeDemoBackground left">
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</div>
+</body>
+<!--<link rel="stylesheet" href="../static/zTree_v3-master/css/demo.css" th:href="@{/zTree_v3-master/css/demo.css}" type="text/css">-->
+<link rel="stylesheet" href="../static/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" th:href="@{/zTree_v3-master/css/zTreeStyle/zTreeStyle.css}" type="text/css">
+<script src="../static/zTree_v3-master/js/jquery-1.4.4.min.js" th:src="@{/zTree_v3-master/js/jquery-1.4.4.min.js}"></script>
+<script src="../static/zTree_v3-master/js/jquery.ztree.core.js"  th:src="@{/zTree_v3-master/js/jquery.ztree.core.js}"></script>
+
+<script>
+    var curMenu = null, zTree_Menu = null;
+    var setting = {
+        view: {
+            showLine: true,
+            selectedMulti: false,
+            dblClickExpand: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onNodeCreated: this.onNodeCreated,
+            beforeClick: this.beforeClick,
+            onClick: this.onClick
+        }
+    };
+
+    var zNodes ;
+    // $(document).ready(function(){
+    //     $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    //     zTree_Menu = $.fn.zTree.getZTreeObj("treeDemo");
+    //     curMenu = zTree_Menu.getNodes()[0].children[0].children[0];
+    //     zTree_Menu.selectNode(curMenu);
+    //     var a = $("#" + zTree_Menu.getNodes()[0].tId + "_a");
+    //     a.addClass("cur");
+    // });
+
+    function onClick(e, treeId, node) {
+        alert("Do what you want to do!");
+    }
+    function beforeClick(treeId, node) {
+        if (node.isParent) {
+            if (node.level === 0) {
+                var pNode = curMenu;
+                while (pNode && pNode.level !==0) {
+                    pNode = pNode.getParentNode();
+                }
+                if (pNode !== node) {
+                    var a = $("#" + pNode.tId + "_a");
+                    a.removeClass("cur");
+                    zTree_Menu.expandNode(pNode, false);
+                }
+                a = $("#" + node.tId + "_a");
+                a.addClass("cur");
+
+                var isOpen = false;
+                for (var i=0,l=node.children.length; i<l; i++) {
+                    if(node.children[i].open) {
+                        isOpen = true;
+                        break;
+                    }
+                }
+                if (isOpen) {
+                    zTree_Menu.expandNode(node, true);
+                    curMenu = node;
+                } else {
+                    zTree_Menu.expandNode(node.children[0].isParent?node.children[0]:node, true);
+                    curMenu = node.children[0];
+                }
+            } else {
+                zTree_Menu.expandNode(node);
+            }
+        }
+        return !node.isParent;
+    }
+
+    $(document).ready(function(){
+        $.ajax({
+            async : false,
+            cache:false,
+            type: 'get',
+            dataType : 'json',
+            url: '/menu/menus',//请求的action路径
+            error: function () {//请求失败处理函数
+                alert('请求失败');
+            },
+            success:function(data){ //请求成功后处理函数。
+                // alert(data[0].id+","+data[0].name+","+data[0].pid)
+                zNodes = data;   //把后台封装好的简单Json格式赋给treeNodes
+            }
+        });
+        // $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        zTree_Menu = $.fn.zTree.getZTreeObj("treeDemo");
+        curMenu = zTree_Menu.getNodes()[0].children[0].children[0];
+        zTree_Menu.selectNode(curMenu);
+        var a = $("#" + zTree_Menu.getNodes()[0].tId + "_a");
+        a.addClass("cur");
+    });
+    // $(document).ready(function(){
+    //     $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    // })
+</script>
+</html>
