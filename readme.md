@@ -15,3 +15,4 @@
 3.  在mapper 中添加注解 `@Repository`，不加的话会在 idea 中使用`@Autowired`会抛红，不影响运行，强迫症决定加上
 
 4.在控制台打印 sql ，将 mapper 所在的包的日志级别设置为 debug 即可。 
+使用zTree  jQuery 版本冲突，先暂时写死，后期寻找好的插件。
