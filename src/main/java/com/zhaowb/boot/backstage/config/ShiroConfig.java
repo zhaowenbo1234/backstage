@@ -35,7 +35,7 @@ public class ShiroConfig {
         // 登录的url
         bean.setLoginUrl("/login");
         // 登录成功后跳转的url
-        bean.setSuccessUrl("/home");
+        bean.setSuccessUrl("/index");
         // 权限拒绝时跳转的url
         bean.setUnauthorizedUrl("/unauthorizedUrl");
 
@@ -55,6 +55,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/js/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
         filterChainDefinitionMap.put("/plugins/**", "anon");
+        filterChainDefinitionMap.put("/zTree_v3-master/**","anon");
 
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");

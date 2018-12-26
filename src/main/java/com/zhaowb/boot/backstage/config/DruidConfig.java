@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+
 /**
  * Created with IDEA
  *
@@ -17,9 +18,9 @@ import javax.sql.DataSource;
 public class DruidConfig {
 
     //  不加入initMethod 在访问druid数据源页面上显示(*) property for user to setup
-    @Bean(destroyMethod = "close",initMethod = "init")
+    @Bean(destroyMethod = "close", initMethod = "init")
     @ConfigurationProperties("spring.datasource.druid")
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return DruidDataSourceBuilder.create().build();
     }
 }
