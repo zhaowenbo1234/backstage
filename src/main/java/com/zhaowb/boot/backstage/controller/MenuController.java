@@ -1,6 +1,5 @@
 package com.zhaowb.boot.backstage.controller;
 
-import com.github.pagehelper.PageInfo;
 import com.zhaowb.boot.backstage.entity.Menu;
 import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.service.IMenuService;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @Description
@@ -29,8 +28,8 @@ public class MenuController {
      */
     @RequestMapping("/selectMenusByUserId")
     @ResponseBody
-    public PageInfo<Menu> selectMenusByUserId(Integer userId) {
-        return menuService.selectMenusByUserId(userId);
+    public Set<Menu> selectMenusByUserId(Integer userId) {
+        return menuService.selectMenuByUserId(userId);
     }
 
     /**
@@ -39,9 +38,9 @@ public class MenuController {
      */
     @RequestMapping("/menus")
     @ResponseBody
-    public List<Menu> menus(){
+    public Set<Menu> menus(){
         User user = ShiroUtils.getSysUser();
-        List<Menu> menus =  menuService.selectMenusByUserId(user.getUserId()).getList();
+        Set<Menu> menus =  menuService.selectMenuByUserId(user.getUserId());
         return menus;
     }
 

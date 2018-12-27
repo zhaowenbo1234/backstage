@@ -1,7 +1,8 @@
 package com.zhaowb.boot.backstage.service;
 
-import com.github.pagehelper.PageInfo;
 import com.zhaowb.boot.backstage.entity.Menu;
+
+import java.util.Set;
 
 /**
  * @Description
@@ -15,5 +16,5 @@ public interface IMenuService {
      * @param userId 用户ID
      * @return 菜单列表
      */
-    PageInfo<Menu> selectMenusByUserId(Integer userId);
+    Set<Menu> selectMenuByUserId(Integer userId);
 }

@@ -2,7 +2,7 @@ package com.zhaowb.boot.backstage.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * 用户表[用户信息]
@@ -121,7 +121,7 @@ public class User implements Serializable {
     private Dept dept;
 
     /** 角色集合 */
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public Integer getUserId() {
         return userId;
@@ -331,11 +331,11 @@ public class User implements Serializable {
         this.dept = dept;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 

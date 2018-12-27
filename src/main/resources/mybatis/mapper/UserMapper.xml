@@ -28,7 +28,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <association property="dept"    column="dept_id" javaType="Dept" resultMap="DeptResultMap" />
-    <collection  property="roles"   javaType="java.util.List"        resultMap="RoleResultMap" />
+    <collection  property="roles"   javaType="java.util.Set"        resultMap="RoleResultMap" />
   </resultMap>
   <resultMap id="DeptResultMap" type="com.zhaowb.boot.backstage.entity.Dept" >
     <id column="dept_id" property="deptId" jdbcType="INTEGER" />

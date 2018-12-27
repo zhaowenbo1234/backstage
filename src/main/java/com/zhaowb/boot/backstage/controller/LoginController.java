@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IDEA
@@ -56,8 +57,9 @@ public class LoginController {
     public String index(ModelMap mm) {
 
         User user = ShiroUtils.getSysUser();
+        Set<Menu> menus = menuService.selectMenuByUserId(user.getUserId());
         mm.addAttribute("user", user);
-
+        mm.addAttribute("menus",menus);
         return "/index";
     }
 
