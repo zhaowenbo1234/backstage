@@ -17,23 +17,12 @@
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
 
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{/favicon.ico}" >
+    <link href="../static/css/bootstrap.min14ed.css?v=3.3.6" th:href="@{/css/bootstrap.min14ed.css?v=3.3.6}" rel="stylesheet">
+    <link href="../static/css/font-awesome.min93e3.css?v=4.4.0" th:href="@{/css/font-awesome.min93e3.css?v=4.4.0}" rel="stylesheet">
+    <link href="../static/css/animate.min.css" th:href="@{/css/animate.min.css}" rel="stylesheet">
+    <link href="../static/css/style.min862f.css?v=4.1.0" th:href="@{/css/style.min862f.css?v=4.1.0}" rel="stylesheet">
 
-    <!--zTree-->
-    <link rel="stylesheet" href="../static/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" th:href="@{/zTree_v3-master/css/zTreeStyle/zTreeStyle.css}" type="text/css">
-    <script src="../static/zTree_v3-master/js/jquery-1.4.4.min.js" th:src="@{/zTree_v3-master/js/jquery-1.4.4.min.js}"></script>
-    <script src="../static/zTree_v3-master/js/jquery.ztree.core.js"  th:src="@{/zTree_v3-master/js/jquery.ztree.core.js}"></script>
-    <style type="text/css">
-        .ztree li a.level0 {width:200px;height: 20px; text-align: center; display:block; background-color: #0B61A4; border:1px silver solid;}
-        .ztree li a.level0.cur {background-color: #66A3D2; }
-        .ztree li a.level0 span {display: block; color: white; padding-top:3px; font-size:12px; font-weight: bold;word-spacing: 2px;}
-        .ztree li a.level0 span.button {	float:right; margin-left: 10px; visibility: visible;display:none;}
-        .ztree li span.button.switch.level0 {display:none;}
-    </style>
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -71,7 +60,12 @@
                     </div>
                 </li>
 
-
+                <li class="active">
+                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a class="menuItem" th:href="@{/system/main}">了解项目</a></li>
+                    </ul>
+                </li>
 
                 <li th:each="menu:${menus}">
                     <a href="#">
@@ -79,6 +73,16 @@
                         <span class="nav-label" th:text="${menu.menuName}">顶层菜单</span>
                         <span class="fa arrow"></span>
                     </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:each="cmenu : ${menu.children}">
+                            <a th:if="${#lists.isEmpty(cmenu.children)}" class="menuItem" th:utext="${cmenu.menuName}" th:href="@{${cmenu.url}}">二级菜单</a>
+                            <a th:if="${not #lists.isEmpty(cmenu.children)}" href="#">[[${cmenu.menuName}]]<span class="fa arrow"></span></a>
+                            <ul th:if="${not #lists.isEmpty(cmenu.children)}" class="nav nav-third-level">
+                                <li th:each="emenu : ${cmenu.children}"><a class="menuItem" th:text="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
                 </li>
 
             </ul>
@@ -627,14 +631,14 @@
         </a>
     </div>
 </div>
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="js/plugins/layer/layer.min.js"></script>
-<script src="js/hplus.min.js?v=4.1.0"></script>
-<script type="text/javascript" src="js/contabs.min.js"></script>
-<script src="js/plugins/pace/pace.min.js"></script>
+<script src="../static/js/jquery.min.js?v=2.1.4" th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+<script src="../static/js/bootstrap.min.js?v=3.3.6" th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
+<script src="../static/js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script src="../static/js/plugins/slimscroll/jquery.slimscroll.min.js" th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script src="../static/js/plugins/layer/layer.min.js" th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="../static/js/hplus.min.js?v=4.1.0" th:src="@{/js/hplus.min.js?v=4.1.0}"></script>
+<script type="text/javascript" src="../static/js/contabs.min.js" th:src="@{/js/contabs.min.js}"></script>
+<script src="../static/js/plugins/pace/pace.min.js" th:src="@{/js/plugins/pace/pace.min.js}"></script>
 </body>
 
 

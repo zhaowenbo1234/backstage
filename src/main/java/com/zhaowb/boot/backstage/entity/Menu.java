@@ -3,7 +3,9 @@ package com.zhaowb.boot.backstage.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Menu implements Serializable {
 
@@ -66,6 +68,11 @@ public class Menu implements Serializable {
      * 备注
      */
     private String remark;
+
+    /**
+     * 子菜单
+     */
+    private List<Menu> children = new ArrayList<>();
 
     public Menu() {
     }
@@ -200,6 +207,19 @@ public class Menu implements Serializable {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
+    }
+
+    public void add(Menu menu){
+        children.add(menu);
+    }
+
 
     @Override
     public String toString() {
