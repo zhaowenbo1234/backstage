@@ -2,7 +2,7 @@ package com.zhaowb.boot.backstage.service;
 
 import com.zhaowb.boot.backstage.entity.Menu;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @Description
@@ -16,5 +16,5 @@ public interface IMenuService {
      * @param userId 用户ID
      * @return 菜单列表
      */
-    Set<Menu> selectMenuByUserId(Integer userId);
+    List<Menu> selectMenuByUserId(Integer userId);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +29,7 @@ public class MenuController {
      */
     @RequestMapping("/selectMenusByUserId")
     @ResponseBody
-    public Set<Menu> selectMenusByUserId(Integer userId) {
+    public List<Menu> selectMenusByUserId(Integer userId) {
         return menuService.selectMenuByUserId(userId);
     }
 
@@ -38,9 +39,9 @@ public class MenuController {
      */
     @RequestMapping("/menus")
     @ResponseBody
-    public Set<Menu> menus(){
+    public List<Menu> menus(){
         User user = ShiroUtils.getSysUser();
-        Set<Menu> menus =  menuService.selectMenuByUserId(user.getUserId());
+        List<Menu> menus =  menuService.selectMenuByUserId(user.getUserId());
         return menus;
     }
 

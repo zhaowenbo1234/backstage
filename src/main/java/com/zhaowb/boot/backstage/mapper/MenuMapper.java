@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
 @Mapper
@@ -20,5 +19,5 @@ public interface MenuMapper {
 
     int updateByPrimaryKey(Menu record);
 
-    Set<Menu> selectMenusByUserId(Integer userId);
+    List<Menu> selectMenusByUserId(Integer userId);
 }

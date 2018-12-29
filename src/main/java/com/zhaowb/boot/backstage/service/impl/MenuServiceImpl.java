@@ -3,10 +3,11 @@ package com.zhaowb.boot.backstage.service.impl;
 import com.zhaowb.boot.backstage.entity.Menu;
 import com.zhaowb.boot.backstage.mapper.MenuMapper;
 import com.zhaowb.boot.backstage.service.IMenuService;
+import com.zhaowb.boot.backstage.util.TreeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @Description
@@ -20,8 +21,8 @@ public class MenuServiceImpl implements IMenuService {
     private MenuMapper menuMapper;
 
     @Override
-    public Set<Menu> selectMenuByUserId(Integer userId) {
-        Set<Menu> menus = menuMapper.selectMenusByUserId(userId);
-        return menus;
+    public List<Menu> selectMenuByUserId(Integer userId) {
+        List<Menu> menus = menuMapper.selectMenusByUserId(userId);
+        return TreeUtils.build(menus, 0);
     }
 }

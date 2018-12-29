@@ -6,7 +6,6 @@ import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.service.IMenuService;
 import com.zhaowb.boot.backstage.service.IUserService;
 import com.zhaowb.boot.backstage.util.ShiroUtils;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -14,8 +13,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;

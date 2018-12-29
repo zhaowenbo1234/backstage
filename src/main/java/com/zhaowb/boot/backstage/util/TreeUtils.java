@@ -12,6 +12,13 @@ import java.util.List;
  */
 public class TreeUtils {
 
+    /**
+     * 两层循环实现建树
+     *
+     * @param treeNodes 传入的树节点列表
+     * @param root      父节点ID
+     * @return
+     */
     public static List<Menu> build(List<Menu> treeNodes, Object root) {
         List<Menu> menus = new ArrayList<>();
         for (Menu menu : treeNodes) {
@@ -29,6 +36,37 @@ public class TreeUtils {
             }
         }
         return menus;
+    }
+
+    /**
+     * 使用递归方法建树
+     *
+     * @param treeNodes 传入的树节点列表
+     * @param root      父节点ID
+     * @return
+     */
+    public static List<Menu> buildByRecursive(List<Menu> treeNodes, Object root) {
+
+        List<Menu> menus = new ArrayList<>();
+        for (Menu menu : treeNodes) {
+            if (root.equals(menu.getParentId())) {
+                menus.add(findChildren(menu, treeNodes));
+//                menus.add(menu);
+            }
+        }
+        return menus;
+    }
+
+    public static Menu findChildren(Menu treeNode, List<Menu> treeNodes) {
+        for (Menu menu : treeNodes) {
+            if (treeNode.getMenuId() == menu.getParentId()) {
+                if (treeNode.getChildren() == null) {
+                    treeNode.setChildren(new ArrayList<>());
+                }
+                treeNode.add(findChildren(menu, treeNodes));
+            }
+        }
+        return treeNode;
     }
 
 }

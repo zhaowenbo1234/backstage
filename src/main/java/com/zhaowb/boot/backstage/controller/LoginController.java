@@ -57,7 +57,7 @@ public class LoginController {
     public String index(ModelMap mm) {
 
         User user = ShiroUtils.getSysUser();
-        Set<Menu> menus = menuService.selectMenuByUserId(user.getUserId());
+        List<Menu> menus = menuService.selectMenuByUserId(user.getUserId());
         mm.addAttribute("user", user);
         mm.addAttribute("menus",menus);
         return "/index";
