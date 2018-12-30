@@ -23,4 +23,11 @@ public interface IUserService {
      * @return User
      */
     User findUserByUserName(String loginName);
+
+    /**
+     * 根据部门id查询用户
+     * @param deptId 部门id
+     * @return List<User> 用户列表
+     */
+    List<User> selectUserByDeptId(Integer deptId);
 }

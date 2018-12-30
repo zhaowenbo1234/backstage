@@ -35,4 +35,9 @@ public class UserServiceImpl implements IUserService {
 
         int i = userMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<User> selectUserByDeptId(Integer deptId) {
+        return null;
+    }
 }

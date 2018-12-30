@@ -138,4 +138,9 @@
       LEFT JOIN sys_role sr on sr.role_id = sur.role_id
       WHERE su.user_name = #{userName}
   </select>
+
+  <select id="selectUserByDeptId" resultMap="BaseResultMap" parameterType="integer">
+
+  </select>
+
 </mapper>
