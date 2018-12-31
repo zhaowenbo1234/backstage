@@ -37,7 +37,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> selectUserByDeptId(Integer deptId) {
+    public List<User> selectUserByDeptId(User user) {
         return null;
     }
 }

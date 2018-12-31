@@ -139,7 +139,7 @@
       WHERE su.user_name = #{userName}
   </select>
 
-  <select id="selectUserByDeptId" resultMap="BaseResultMap" parameterType="integer">
+  <select id="selectUserByDeptId" resultMap="BaseResultMap" parameterType="com.zhaowb.boot.backstage.entity.User">
 
   </select>
 

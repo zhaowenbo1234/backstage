@@ -25,9 +25,9 @@ public interface IUserService {
     User findUserByUserName(String loginName);
 
     /**
-     * 根据部门id查询用户
-     * @param deptId 部门id
+     * 根据条件查询用户
+     * @param user
      * @return List<User> 用户列表
      */
-    List<User> selectUserByDeptId(Integer deptId);
+    List<User> selectUserByDeptId(User user);
 }

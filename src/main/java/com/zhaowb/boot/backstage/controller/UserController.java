@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @RequestMapping("/selectUserByDeptId")
-    public List<User> selectUserByDeptId(Integer deptId){
-        return userService.selectUserByDeptId(deptId);
+    public List<User> selectUserByDeptId(User user){
+        return userService.selectUserByDeptId(user);
     }
 }
