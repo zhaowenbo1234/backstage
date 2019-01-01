@@ -50,7 +50,6 @@ public class LoginController {
             System.out.println("登录错误");
             return "login";
         }
-
     }
 
     @RequestMapping("/index")
