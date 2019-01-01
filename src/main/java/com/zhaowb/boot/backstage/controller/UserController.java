@@ -36,7 +36,7 @@ public class UserController {
     }
 
     /**
-     * 查询所有未删除用户
+     * 查询所有用户（未删除的）
      *
      * @return List<User>
      */
@@ -46,8 +46,8 @@ public class UserController {
         return userService.selectAllUsers();
     }
 
-    @RequestMapping("/selectUserByDeptId")
-    public List<User> selectUserByDeptId(User user){
-        return userService.selectUserByDeptId(user);
+    @RequestMapping("/selectUserList")
+    public List<User> selectUserList(User user){
+        return userService.selectUserList(user);
     }
 }

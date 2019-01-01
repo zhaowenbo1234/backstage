@@ -26,5 +26,5 @@ public interface UserMapper {
      * @param user
      * @return List<User> 用户列表
      */
-    List<User> selectUserByDeptId(User user);
+    List<User> selectUserList(User user);
 }
