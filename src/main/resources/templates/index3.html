@@ -78,7 +78,7 @@
                             <a th:if="${#lists.isEmpty(cmenu.children)}" class="menuItem" th:utext="${cmenu.menuName}" th:href="@{${cmenu.url}}">二级菜单</a>
                             <a th:if="${not #lists.isEmpty(cmenu.children)}" href="#">[[${cmenu.menuName}]]<span class="fa arrow"></span></a>
                             <ul th:if="${not #lists.isEmpty(cmenu.children)}" class="nav nav-third-level">
-                                <li th:each="emenu : ${cmenu.children}"><a class="menuItem" th:text="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</a></li>
+                                <li th:each="emenu : ${cmenu.children}"><iframe class="menuItem" th:text="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</iframe></li>
                             </ul>
                         </li>
 
@@ -639,6 +639,7 @@
 <script src="../static/js/hplus.min.js?v=4.1.0" th:src="@{/js/hplus.min.js?v=4.1.0}"></script>
 <script type="text/javascript" src="../static/js/contabs.min.js" th:src="@{/js/contabs.min.js}"></script>
 <script src="../static/js/plugins/pace/pace.min.js" th:src="@{/js/plugins/pace/pace.min.js}"></script>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
 </body>
 
 
