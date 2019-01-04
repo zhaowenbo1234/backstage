@@ -44,18 +44,20 @@ public class ShiroConfig {
         // 拦截index接口，authc表示需要认证才能访问
         // 对静态资源设置匿名访问 anon表示不拦截
         filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico**", "anon");
         filterChainDefinitionMap.put("/*.png**", "anon");
+        filterChainDefinitionMap.put("/*.svg**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
-        filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/ajax/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/sys/js/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
         filterChainDefinitionMap.put("/plugins/**", "anon");
         filterChainDefinitionMap.put("/zTree_v3-master/**","anon");
+        filterChainDefinitionMap.put("/bootstrap-4.2.1/**","anon");
 
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
