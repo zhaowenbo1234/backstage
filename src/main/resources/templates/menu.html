@@ -1,66 +1,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<script src="/static/js/jquery-3.3.1/jquery-3.3.1.min.js" th:src="@{/js/jquery-3.3.1/jquery-3.3.1.min.js}"></script>
+<script src="/static/js/jquery-ui.min.js" th:src="@{/js/jquery-ui.min.js}"></script>
 <div th:fragment="leftMenu">
-    <!-- 左边菜单 -->
-    <div id="skin-select">
-        <!-- PC端 LOGO -->
-        <div id="logo">
-            <h1>backstage</h1>
+
+    <div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close">
+            <i class="fa fa-times-circle"></i>
         </div>
-        <!--END PC端 LOGO -->
-
-        <!--点击隐藏左边菜单栏按钮 -->
-        <a id="toggle">
-            <span class="entypo-menu"></span>
-        </a>
-        <!--END点击隐藏左边菜单栏按钮 -->
-        <!-- PC端搜索按钮 -->
-        <div class="dark">
-            <form action="#">
-	            <span>
-					<input type="text" name="search" value="" class="search rounded id_search" placeholder="菜单搜索"
-                           autofocus/>
-	            </span>
-            </form>
-        </div>
-        <!-- 手机端搜索按钮  有bug-->
-        <div class="search-hover">
-            <form id="demo-2">
-                <input type="search" placeholder="Search4 Menu..." class="id_search">
-            </form>
-        </div>
-
-
-        <!-- 左侧菜单栏 -->
-        <div class="skin-part">
-            <div id="tree-wrap">
-                <div class="side-bar" th:each="muen,muenStat:${session.bootstrapThree.nodes}">
-                    <ul class="topnav menu-left-nest">
-                        <li>
-                            <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
-
-                                <span th:text="${muen.text}"></span>
-                                <i data-toggle="tooltip" th:classappend="${muen.icon}"
-                                   class="pull-right config-wrap"></i>
-
-                            </a>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li th:each="menu : ${session.menus}">
+                    <a href="#">
+                        <i class="fa fa fa-bar-chart-o" th:classappend="${menu.icon}"></i>
+                        <span class="nav-label" th:text="${menu.menuName}">一级菜单</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:each="cmenu : ${menu.children}">
+                            <a th:if="${#lists.isEmpty(cmenu.children)}" class="menuItem" th:utext="${cmenu.menuName}" th:href="@{${cmenu.url}}">二级菜单</a>
+                            <a th:if="${not #lists.isEmpty(cmenu.children)}" href="#">[[${cmenu.menuName}]]<span class="fa arrow"></span></a>
+                            <ul th:if="${not #lists.isEmpty(cmenu.children)}" class="nav nav-third-level">
+                                <li th:each="emenu : ${cmenu.children}"><a class="menuItem" th:text="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</a></li>
+                            </ul>
                         </li>
-                        <th:bolck th:if=${muen.nodes!=null}>
-                            <li th:each="caidan,caidanStat:${muen.nodes}">
-                                <a class="tooltip-tip" th:href="@{${rootPath}+''+${caidan.url}}"
-                                   th:title="${caidan.text}">
-                                    <i th:classappend="${caidan.icon}" class=""></i>
-                                    <span th:text="${caidan.text}">用户管理</span>
-                                </a>
-                            </li>
-                        </th:bolck>
-
-
                     </ul>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
-        <!-- 左侧菜单栏 -->
+    </nav>
+    <!--左侧导航结束-->
     </div>
-    <!-- 结束左边菜单栏 -->
 
 </div>

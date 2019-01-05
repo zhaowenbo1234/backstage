@@ -37,14 +37,12 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String username, String password, HttpSession session) {
+    public String login(String username, String password) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 
         try {
             subject.login(token);
-            User user = (User) subject.getPrincipal();
-            session.setAttribute("user", user);
             return "redirect:/index";
         } catch (AuthenticationException e) {
             System.out.println("登录错误");
@@ -53,12 +51,11 @@ public class LoginController {
     }
 
     @RequestMapping("/index")
-    public String index(ModelMap mm) {
-
+    public String index(ModelMap mm,HttpSession session) {
         User user = ShiroUtils.getSysUser();
         List<Menu> menus = menuService.selectMenuByUserId(user.getUserId());
-        mm.addAttribute("user", user);
-        mm.addAttribute("menus",menus);
+        session.setAttribute("user",user);
+        session.setAttribute("menus",menus);
         return "/index";
     }
 
