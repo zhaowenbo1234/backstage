@@ -2,10 +2,12 @@ package com.zhaowb.boot.backstage.controller;
 
 import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.service.IUserService;
+import com.zhaowb.boot.backstage.vo.UserSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -46,8 +48,8 @@ public class UserController {
         return userService.selectAllUsers();
     }
 
-    @RequestMapping("/selectUserList")
-    public List<User> selectUserList(User user){
-        return userService.selectUserList(user);
+    @RequestMapping(value = "/selectUserList",method = RequestMethod.POST)
+    public List<User> selectUserList(UserSearchVO userSearchVO){
+        return userService.selectUserList(userSearchVO);
     }
 }

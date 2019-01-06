@@ -1,6 +1,7 @@
 package com.zhaowb.boot.backstage.mapper;
 
 import com.zhaowb.boot.backstage.entity.User;
+import com.zhaowb.boot.backstage.vo.UserSearchVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -23,8 +24,8 @@ public interface UserMapper {
 
     /**
      * 根据条件查询用户
-     * @param user
+     * @param userSearchVO
      * @return List<User> 用户列表
      */
-    List<User> selectUserList(User user);
+    List<User> selectUserList(UserSearchVO userSearchVO);
 }

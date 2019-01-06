@@ -3,6 +3,7 @@ package com.zhaowb.boot.backstage.service.impl;
 import com.zhaowb.boot.backstage.entity.User;
 import com.zhaowb.boot.backstage.mapper.UserMapper;
 import com.zhaowb.boot.backstage.service.IUserService;
+import com.zhaowb.boot.backstage.vo.UserSearchVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> selectUserList(User user) {
-        return userMapper.selectUserList(user);
+    public List<User> selectUserList(UserSearchVO userSearchVO) {
+        return userMapper.selectUserList(userSearchVO);
     }
 }
