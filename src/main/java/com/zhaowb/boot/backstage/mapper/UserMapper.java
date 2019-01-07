@@ -28,4 +28,19 @@ public interface UserMapper {
      * @return List<User> 用户列表
      */
     List<User> selectUserList(UserSearchVO userSearchVO);
+
+
+    /**
+     * 根据用户ID删除用户
+     * @param userId 待删除用户ID
+     * @return
+     */
+    Integer deleteUserByUserId(Integer userId);
+
+    /**
+     * 批量根据用户ID删除用户
+     * @param userIds 用户iD数组
+     * @return
+     */
+    Integer deleteUserByIds(Integer[] userIds);
 }

@@ -41,4 +41,14 @@ public class UserServiceImpl implements IUserService {
     public List<User> selectUserList(UserSearchVO userSearchVO) {
         return userMapper.selectUserList(userSearchVO);
     }
+
+    @Override
+    public Integer deleteUserByUserId(Integer userId) {
+        return userMapper.deleteUserByUserId(userId);
+    }
+
+    @Override
+    public Integer deleteUserByIds(Integer[] userIds) {
+        return userMapper.deleteUserByIds(userIds);
+    }
 }
